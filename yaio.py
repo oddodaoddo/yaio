@@ -28,9 +28,7 @@ def loop(fake_browser_header, chance=10, site_list=[]):
             url = site_list[p]
             print(f"Selecting url: {url}")
             r = requests.get(url, headers=headers, timeout=10)
-            if r.status_code == requests.codes.ok:
-                print(r.text)
-            else:
+            if r.status_code != requests.codes.ok:
                 r.raise_for_status()
             # do something with response
             # then wait a random amount of time
